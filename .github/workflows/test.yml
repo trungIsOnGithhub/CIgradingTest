@@ -15,9 +15,10 @@ jobs:
       - run: cd .. && ls
       - run: cd .. && cd .. && ls
       - run: cd .. && cd .. && cd .. && ls
-      - run: cd / && ls
-      - run: cd /tmp && ls
-      - run: cd /github/home && ls
+      # - run: cd / && ls
+      - run: find / -name cnpmnc.cabal
+      # - run: cd /tmp && ls
+      # - run: cd /github/home && ls
       # - run: ls
       # - run: cabal --version
       # - run: ./test
