@@ -9,7 +9,8 @@ jobs:
       image: haskell:9.6.3-slim-buster
     steps:
       - uses: actions/checkout@v3
-      - run: ls
+      - run: cd .. && ls
+      # - run: ls
       # - run: cabal --version
       # - run: ./test
       # - run: cabal update -v0
