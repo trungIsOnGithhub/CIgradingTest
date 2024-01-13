@@ -1,7 +1,6 @@
-name: CIHaskell
+name: CIGradingTest
 on:
   workflow_call:
-
 
 jobs:
   ci-test:
