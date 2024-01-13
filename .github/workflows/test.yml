@@ -1,0 +1,36 @@
+name: CIHaskell
+on:
+  workflow_call:
+
+
+jobs:
+  ci-test:
+    runs-on: ubuntu-latest
+    container:
+      image: haskell:9.6.3-slim-buster
+    steps:
+      - uses: actions/checkout@v3
+      - run: ls
+      # - run: cabal --version
+      # - run: ./test
+      # - run: cabal update -v0
+      # - run: cabal run -v0
+      # - run: ghc hello.hs
+      # - run: ./hello
+      # - run: apt-get update
+      # - run: apt-get -qq install lsof python3.11 python3-selenium
+      # - run: npm i
+      # - run: node server.js &
+      # - run: npm run test
+      # - run: cd __test__/testUI/
+      # - run: python3 script.py
+      # - run: kill -9 $(lsof -t -i:5000)
+  # pytest:
+  #   runs-on: ubuntu-latest
+  #   container: nikolaik/python-nodejs:python3.11-nodejs18-alpine
+  #   steps:
+  #     - run: apt-get update
+  #     - run: apt-get -qq install lsof
+  #     - run: node server.js &
+      
+  #     - run: kill -9 $(lsof -t -i:5000)
