@@ -16,8 +16,9 @@ jobs:
       - run: cd .. && cd .. && ls
       - run: cd .. && cd .. && cd .. && ls
       - run: cd / && ls
+      - run: cd /_t && ls
       # - run: ls
-      - run: cabal --version
+      # - run: cabal --version
       # - run: ./test
       # - run: cabal update -v0
       # - run: cabal run -v0
