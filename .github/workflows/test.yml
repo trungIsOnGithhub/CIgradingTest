@@ -9,10 +9,11 @@ jobs:
   ci-test:
     runs-on: ubuntu-latest
     container:
-      image: haskell:9.6.3-slim-buster
+      image: haskell:8.0.2
     steps:
       - uses: actions/checkout@v3
-      - run: cd .. && ls
+      - run: cd .. && cd .. && ls
+      - run: ghc --version
       # - run: ls
       # - run: cabal --version
       # - run: ./test
