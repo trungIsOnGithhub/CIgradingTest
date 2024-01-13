@@ -1,6 +1,9 @@
 name: CIGradingTest
 on:
   workflow_call:
+  push:
+    branches:
+    - main
 
 jobs:
   ci-test:
