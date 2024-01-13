@@ -9,13 +9,15 @@ jobs:
   ci-test:
     runs-on: ubuntu-latest
     container:
-      image: haskell:8.0.2
+      image: haskell:7.8.4
     steps:
       - uses: actions/checkout@v3
+      - run: cd .. && ls
       - run: cd .. && cd .. && ls
-      - run: ghc --version
+      - run: cd .. && cd .. && cd .. && ls
+      - run: cd / && ls
       # - run: ls
-      # - run: cabal --version
+      - run: cabal --version
       # - run: ./test
       # - run: cabal update -v0
       # - run: cabal run -v0
