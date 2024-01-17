@@ -12,10 +12,8 @@ jobs:
       image: haskell:7.8.4
     steps:
       - uses: actions/checkout@v3
-      - run: mv ./Main.hs ./app/Main.hs
-      - run: mv ./run ./app/run
-      - run: ls
-      - run: cd .. && ls
+      - run: bash ./run.sh
+      # - run: cd .. && ls
       # - run: cd .. && cd .. && ls
       # - run: cd .. && cd .. && cd .. && ls
       # - run: cd / && ls
@@ -26,6 +24,7 @@ jobs:
       # - run: cabal --version
       # - run: ./test
       # - run: cabal update -v0
+      - run: ./app/run
       - run: cabal run -v0
       # - run: ghc hello.hs
       # - run: ./hello
