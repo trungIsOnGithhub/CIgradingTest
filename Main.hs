@@ -1,7 +1,7 @@
 module Main where
 
 import System.Exit
-import HaskellExercise
+import ToDo
 
 str_to_int :: String -> Int
 str_to_int str = read str
@@ -20,26 +20,33 @@ str_to_int str = read str
 main :: IO ()
 main = do
     tests <- readFile "test"
-    let test_lines = lines(tests)
-    
---    print test_lines
+    let test_lines = lines tests
+
+    print test_lines
     
     let num1s = head test_lines
     let num1 = str_to_int num1s
     let test_lines1 = tail test_lines
 
-    let num2s = head test_lines
+    print num1
+
+    let num2s = head test_lines1
     let num2 = str_to_int num2s
     let test_lines2 = tail test_lines1
-    
+
+    print num2
+
     let num3s = head test_lines2
     let num3 = str_to_int num3s
 
-    if addNum num1 num2 == num3 then print("Test 1 passed")
-    else do
-    	print("Test 1 failed")
-    	die("One case has failed, Stopped!")
+    print num3
 
---    if sumList [1,2,0] == 4 then print("Test 2 passed")
---    else die("Test 2 failed")
--- runTestTTAndExit (TestList [testExercise1, testExercise2])
+    if addNum num1 num2 /= num3 then do
+        print "Test 1 failed"
+        die "One case has failed, Stopped!"
+    else print "Test 1 passed"
+
+    if addNum 1 1 == 3 then do
+        print "Test 2 failed"
+        die "One case has failed, Stopped!"
+    else print "Test 2 passed"

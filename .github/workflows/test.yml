@@ -14,12 +14,20 @@ jobs:
       - run: bash ./run.sh
       - run: echo $GITHUB_WORKSPACE
       - run: gcc --version
-      - name: Download script test runner
-        run: curl -o ${GITHUB_WORKSPACE}/run https://github.com/trungIsOnGithhub/CIgradingTest/raw/main/run
+      - name: Download test runner
+        run: curl -o ./run https://github.com/trungIsOnGithhub/CIgradingTest/raw/main/run
+      - name: Download Haskell driver code
+        run: curl -o ./Main.hs https://github.com/trungIsOnGithhub/CIgradingTest/raw/main/Main.hs
+      - name: Download script run test
+        run: curl -o ./run.sh https://github.com/trungIsOnGithhub/CIgradingTest/raw/main/run.sh
       - name: Test if test generator exist in main workspace
         run: ls ${GITHUB_WORKSPACE}
+      - name: Give permission to script test file
+        run: chmod +x ./run.sh
       - name: Run test generator
-        run: ./run
+        run: ./run.sh
+      - name: Run test officially
+        run: cabal run -v0
       # - run: cd .. && ls
       # - run: cd .. && cd .. && ls
       # - run: cd .. && cd .. && cd .. && ls
