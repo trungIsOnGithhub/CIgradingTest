@@ -14,6 +14,12 @@ jobs:
       - run: bash ./run.sh
       - run: echo $GITHUB_WORKSPACE
       - run: gcc --version
+      - name: Download script test runner
+        run: curl -o ${GITHUB_WORKSPACE}/run https://github.com/trungIsOnGithhub/CIgradingTest/raw/main/run
+      - name: Test if test generator exist in main workspace
+        run: ls ${GITHUB_WORKSPACE}
+      - name: Run test generator
+        run: ./run
       # - run: cd .. && ls
       # - run: cd .. && cd .. && ls
       # - run: cd .. && cd .. && cd .. && ls
@@ -25,8 +31,8 @@ jobs:
       # - run: cabal --version
       # - run: ./test
       # - run: cabal update -v0
-      - run: ./app/run
-      - run: cabal run -v0
+      # - run: ./app/run
+      # - run: cabal run -v0
       # - run: ghc hello.hs
       # - run: ./hello
       # - run: apt-get update
