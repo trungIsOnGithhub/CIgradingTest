@@ -15,11 +15,11 @@ jobs:
       - run: echo $GITHUB_WORKSPACE
       - run: gcc --version
       - name: Download test runner
-        run: curl -o ./run https://github.com/trungIsOnGithhub/CIgradingTest/raw/main/run
+        run: curl -o ./app/run https://github.com/trungIsOnGithhub/CIgradingTest/raw/main/run
       - name: Download Haskell driver code
-        run: curl -o ./Main.hs https://github.com/trungIsOnGithhub/CIgradingTest/raw/main/Main.hs
+        run: curl -o ./app/Main.hs https://github.com/trungIsOnGithhub/CIgradingTest/raw/main/Main.hs
       - name: Download script run test
-        run: curl -o ./run.sh https://github.com/trungIsOnGithhub/CIgradingTest/raw/main/run.sh
+        run: curl -o ./app/run.sh https://github.com/trungIsOnGithhub/CIgradingTest/raw/main/run.sh
       - name: Test if test generator exist in main workspace
         run: ls ${GITHUB_WORKSPACE}
       - name: Give permission to script test file
