@@ -1,9 +1,9 @@
 name: CIGradingTest
 on:
   workflow_call:
-  push:
-    branches:
-    - main
+  # push:
+  #   branches:
+  #   - main
 
 jobs:
   ci-test:
@@ -12,6 +12,8 @@ jobs:
       image: haskell:9.0-slim    
     steps:
       - uses: actions/checkout@v3
+        with:
+          path: '/usr'
       - run: bash ./run.sh
       - run: echo $GITHUB_WORKSPACE
       - run: gcc --version
