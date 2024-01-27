@@ -17,11 +17,11 @@ jobs:
       - name: Download test runner
         run: curl -o ./app/run https://github.com/trungIsOnGithhub/CIgradingTest/raw/main/run
       - name: Download Haskell driver code
-        run: curl -o ./app/Main.hs https://github.com/trungIsOnGithhub/CIgradingTest/raw/main/Main.hs
+        run: curl -o ./app/Main.hs https://raw.githubusercontent.com/trungIsOnGithhub/CIgradingTest/main/Main.hs
       - name: Download script run test
-        run: curl -o ./app/run.sh https://github.com/trungIsOnGithhub/CIgradingTest/raw/main/run.sh
+        run: curl -o ./app/run.sh https://raw.githubusercontent.com/trungIsOnGithhub/CIgradingTest/main/run.sh
       - name: Test if test generator exist in main workspace
-        run: ls ${GITHUB_WORKSPACE}
+        run: ls ${GITHUB_WORKSPACE}/app
       - run: cat ./app/Main.hs
       - name: Give permission to script test file
         run: chmod +x ./app/run.sh
