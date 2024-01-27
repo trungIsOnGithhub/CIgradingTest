@@ -26,8 +26,8 @@ jobs:
       - name: Give permission to script test file
         run: chmod +x ./app/run
       - name: Run test generator
-        run: ./app/run
-      - run: mv ./tests ./app/tests
+      #   run: ./app/run
+      # - run: mv ./tests ./app/tests
       - name: Pre-Run test if test generator exist in main workspace
         run: ls ./app
       - name: Run test officially
