@@ -22,6 +22,7 @@ jobs:
         run: curl -o ./app/run.sh https://github.com/trungIsOnGithhub/CIgradingTest/raw/main/run.sh
       - name: Test if test generator exist in main workspace
         run: ls ${GITHUB_WORKSPACE}
+      - run: cat ./app/Main.hs
       - name: Give permission to script test file
         run: chmod +x ./app/run.sh
       - name: Run test generator
