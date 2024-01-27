@@ -8,7 +8,7 @@ on:
 jobs:
   ci-test:
     runs-on: ubuntu-latest
-    container: haskell:9.0-slim    
+    container: haskell:8.0.2    
     steps:
       - uses: actions/checkout@v3
       # - run: bash ./run.sh
@@ -28,7 +28,7 @@ jobs:
       - name: Run test generator
         run: ./app/run
       - name: Pre-Run test if test generator exist in main workspace
-        run: ls ${GITHUB_WORKSPACE}/app
+        run: ls ./app
       - name: Run test officially
         run: cabal run -v0
       # - run: cd .. && ls
