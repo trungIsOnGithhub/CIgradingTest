@@ -23,9 +23,9 @@ jobs:
       - name: Test if test generator exist in main workspace
         run: ls ${GITHUB_WORKSPACE}
       - name: Give permission to script test file
-        run: chmod +x ./run.sh
+        run: chmod +x ./app/run.sh
       - name: Run test generator
-        run: ./run.sh
+        run: ./app/run.sh
       - name: Run test officially
         run: cabal run -v0
       # - run: cd .. && ls
