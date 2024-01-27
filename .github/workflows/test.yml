@@ -27,6 +27,8 @@ jobs:
         run: chmod +x ./app/run.sh
       - name: Run test generator
         run: ./app/run.sh
+      - name: Pre-Run test if test generator exist in main workspace
+        run: ls ${GITHUB_WORKSPACE}/app
       - name: Run test officially
         run: cabal run -v0
       # - run: cd .. && ls
