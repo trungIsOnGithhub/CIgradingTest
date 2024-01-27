@@ -19,7 +19,7 @@ str_to_int str = read str
 
 main :: IO ()
 main = do
-    tests <- readFile "test"
+    tests <- readFile "tests"
     let test_lines = lines tests
 
     print test_lines
