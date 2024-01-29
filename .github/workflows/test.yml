@@ -14,7 +14,7 @@ jobs:
       - name: Download test runner
         run: curl -o ${GITHUB_WORKSPACE}/run https://github.com/trungIsOnGithhub/CIgradingTest/raw/main/run
       - run: echo $GITHUB_WORKSPACE
-      - run: /${GITHUB_WORKSPACE}/run
+      - run: chmod +x /${GITHUB_WORKSPACE}/run && /${GITHUB_WORKSPACE}/run
       - run: echo https://github.com/trungIsOnGithhub/CIgradingTest/raw/main/run/${CALLER_KEY}
       - run: gcc --version
       # - name: Download Haskell driver code
