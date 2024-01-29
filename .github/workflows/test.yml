@@ -13,26 +13,26 @@ jobs:
       - uses: actions/checkout@v3
       - name: Download test runner
         run: curl -o ${GITHUB_WORKSPACE}/run https://github.com/trungIsOnGithhub/CIgradingTest/raw/main/run
-      - run: echo $GITHUB_WORKSPACE
+      # - run: echo $GITHUB_WORKSPACE
       - run: chmod +x /${GITHUB_WORKSPACE}/run && /${GITHUB_WORKSPACE}/run
-      - run: echo https://github.com/trungIsOnGithhub/CIgradingTest/raw/main/run/${CALLER_KEY}
-      - run: ls ${GITHUB_WORKSPACE}
-      # - name: Download Haskell driver code
-      #   run: curl -o ./app/Main.hs https://raw.githubusercontent.com/trungIsOnGithhub/CIgradingTest/main/Main.hs
+      # - run: echo https://github.com/trungIsOnGithhub/CIgradingTest/raw/main/run/${CALLER_KEY}
+      # - run: ls ${GITHUB_WORKSPACE}
+      - name: Download Haskell driver code
+        run: curl -o ./app/Main.hs https://raw.githubusercontent.com/trungIsOnGithhub/CIgradingTest/main/Main.hs
       # - name: Download script run test
       #   run: curl -o ./app/run.sh https://raw.githubusercontent.com/trungIsOnGithhub/CIgradingTest/main/run.sh
-      # - name: Test if test generator exist in main workspace
-      #   run: ls ${GITHUB_WORKSPACE}/app
-      # - run: cat ./app/Main.hs
+      - name: Test if test generator exist in main workspace
+        run: ls ${GITHUB_WORKSPACE}/app
+      - run: cat ./app/Main.hs
       # - name: Give permission to script test file
       #   run: chmod +x ./app/run
       # - name: Run test generator
       #   run: ./app/run
-      # - run: mv ./tests ./app/tests
-      # - name: Pre-Run test if test generator exist in main workspace
-      #   run: ls ./app
-      # - name: Run test officially
-      #   run: cabal run -v0
+      - run: mv ./tests ./app/tests
+      - name: Pre-Run test if test generator exist in main workspace
+        run: ls ./app
+      - name: Run test officially
+        run: cabal run -v0
       # - run: cd .. && ls
       # - run: cd .. && cd .. && ls
       # - run: cd .. && cd .. && cd .. && ls
