@@ -36,6 +36,7 @@ jobs:
       - name: Run test officially
         run: cabal run -v0
       - run: ls ${GITHUB_WORKSPACE}/app
+      - run: cat ${GITHUB_WORKSPACE}/app/outs
       # - run: cd .. && ls
       # - run: cd .. && cd .. && ls
       # - run: cd .. && cd .. && cd .. && ls
