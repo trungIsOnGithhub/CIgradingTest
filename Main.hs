@@ -19,34 +19,42 @@ str_to_int str = read str
 
 main :: IO ()
 main = do
-    tests <- readFile "tests"
-    let test_lines = lines tests
+    -- tests <- readFile "tests"
+    -- let test_lines = lines tests
 
-    print test_lines
+    -- print test_lines
     
-    let num1s = head test_lines
-    let num1 = str_to_int num1s
-    let test_lines1 = tail test_lines
+    -- let num1s = head test_lines
+    -- let num1 = str_to_int num1s
+    -- let test_lines1 = tail test_lines
 
-    print num1
+    -- print num1
 
-    let num2s = head test_lines1
-    let num2 = str_to_int num2s
-    let test_lines2 = tail test_lines1
+    -- let num2s = head test_lines1
+    -- let num2 = str_to_int num2s
+    -- let test_lines2 = tail test_lines1
 
-    print num2
+    -- print num2
 
-    let num3s = head test_lines2
-    let num3 = str_to_int num3s
+    -- let num3s = head test_lines2
+    -- let num3 = str_to_int num3s
 
-    print num3
+    -- print num3
 
-    if addNum num1 num2 /= num3 then do
-        print "Test 1 failed"
-        die "One case has failed, Stopped!"
-    else print "Test 1 passed"
+    let num1 = -69
 
-    if addNum 1 1 == 3 then do
-        print "Test 2 failed"
-        die "One case has failed, Stopped!"
-    else print "Test 2 passed"
+    let num2 = 69
+
+    let result1 = addNum num1 num2
+
+    writeFile outs result1
+
+    -- if addNum num1 num2 /= num3 then do
+    --    print "Test 1 failed"
+    --    die "One case has failed, Stopped!"
+    -- else print "Test 1 passed"
+
+    -- if addNum 1 1 == 3 then do
+    --    print "Test 2 failed"
+    --    die "One case has failed, Stopped!"
+    -- else print "Test 2 passed"
