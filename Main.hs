@@ -3,8 +3,8 @@ module Main where
 import System.Exit
 import ToDo
 
-str_to_int :: String -> Int
-str_to_int str = read str
+-- str_to_int :: String -> Int
+-- str_to_int str = read str
 
 -- Helper
 -- remove_first:: [a] -.
