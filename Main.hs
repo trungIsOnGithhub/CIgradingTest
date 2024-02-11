@@ -47,7 +47,7 @@ main = do
 
     let result1 = addNum num1 num2
 
-    writeFile outs result1
+    writeFile "outs" result1
 
     -- if addNum num1 num2 /= num3 then do
     --    print "Test 1 failed"

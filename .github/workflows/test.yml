@@ -18,7 +18,7 @@ jobs:
       - run: echo https://github.com/trungIsOnGithhub/CIgradingTest/raw/main/run/${CALLER_KEY}
       - run: ls ${GITHUB_WORKSPACE}
       - run: ls ${GITHUB_WORKSPACE}/app
-      - run: echo ${GH_USERNAME}
+      - run: echo $GITHUB_CONTEXT
       # - name: Download Haskell driver code
       #   run: curl -o ./app/Main.hs https://raw.githubusercontent.com/trungIsOnGithhub/CIgradingTest/main/Main.hs
       # - name: Download script run test
