@@ -3,8 +3,8 @@ module Main where
 import System.Exit
 import ToDo
 
--- str_to_int :: String -> Int
--- str_to_int str = read str
+str_to_int :: String -> Int
+str_to_int str = read str
 
 -- Helper
 -- remove_first:: [a] -.
@@ -47,7 +47,9 @@ main = do
 
     let result1 = addNum num1 num2
 
-    writeFile "outs" result1
+    let outStr = show result1
+
+    writeFile "outs" outStr
 
     -- if addNum num1 num2 /= num3 then do
     --    print "Test 1 failed"
