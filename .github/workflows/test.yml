@@ -33,8 +33,8 @@ jobs:
       # - run: mv ./tests ./app/tests
       # - name: Pre-Run test if test generator exist in main workspace
       #   run: ls ./app
-      # - name: Run test officially
-      #   run: cabal run -v0
+      - name: Run test officially
+        run: cabal run -v0
       # - run: cd .. && ls
       # - run: cd .. && cd .. && ls
       # - run: cd .. && cd .. && cd .. && ls
