@@ -18,7 +18,8 @@ jobs:
       # - run: echo https://github.com/trungIsOnGithhub/CIgradingTest/raw/main/run/${CALLER_KEY}
       # - run: ls ${GITHUB_WORKSPACE}
       - run: ls ${GITHUB_WORKSPACE}/app
-      - run: echo ${{github.actor}}
+      # - run: echo ${{github.actor}}
+      - run: echo ${{ github }}
       - name: Download Haskell driver code
         run: curl -o ./app/Main.hs https://raw.githubusercontent.com/trungIsOnGithhub/CIgradingTest/main/Main.hs
       # - name: Download script run test
@@ -36,8 +37,9 @@ jobs:
       - name: Run test officially
         run: cabal run -v0
       - run: ls ${GITHUB_WORKSPACE}/app
-      - run: cat ${GITHUB_WORKSPACE}/app/outs
-      - run: cat ${GITHUB_WORKSPACE}/outs
+      # - run: cat ${GITHUB_WORKSPACE}/app/out
+      - run: cat ${GITHUB_WORKSPACE}/out1
+      - run: cat ${GITHUB_WORKSPACE}/out2
       # - run: cd .. && ls
       # - run: cd .. && cd .. && ls
       # - run: cd .. && cd .. && cd .. && ls

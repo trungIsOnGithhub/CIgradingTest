@@ -19,44 +19,68 @@ str_to_int str = read str
 
 main :: IO ()
 main = do
-    -- tests <- readFile "tests"
-    -- let test_lines = lines tests
+    tests <- readFile "in0"
+    let test_lines = lines tests
 
-    -- print test_lines
+    print test_lines
     
-    -- let num1s = head test_lines
-    -- let num1 = str_to_int num1s
-    -- let test_lines1 = tail test_lines
+    let num1s = head test_lines
+    let num1 = str_to_int num1s
+    let test_lines1 = tail test_lines
 
-    -- print num1
+    print num1
 
-    -- let num2s = head test_lines1
-    -- let num2 = str_to_int num2s
-    -- let test_lines2 = tail test_lines1
+    let num2s = head test_lines1
+    let num2 = str_to_int num2s
+    let test_lines2 = tail test_lines1
 
-    -- print num2
+    print num2
 
-    -- let num3s = head test_lines2
-    -- let num3 = str_to_int num3s
+    let num3s = head test_lines2
+    let num3 = str_to_int num3s
 
-    -- print num3
-
-    let num1 = -69
-
-    let num2 = 69
+    print num3
 
     let result1 = addNum num1 num2
 
     let outStr = show result1
 
-    writeFile "outs" outStr
+    writeFile "out0" outStr
 
-    -- if addNum num1 num2 /= num3 then do
-    --    print "Test 1 failed"
-    --    die "One case has failed, Stopped!"
-    -- else print "Test 1 passed"
 
-    -- if addNum 1 1 == 3 then do
-    --    print "Test 2 failed"
-    --    die "One case has failed, Stopped!"
-    -- else print "Test 2 passed"
+    -- Test Exercise 2
+
+    tests <- readFile "in1"
+    let test_lines = lines tests
+
+    print test_lines
+    
+    let first_line = head test_lines
+
+    let num_str_list = words first_line
+
+    let num1s = num_str_list !! 0
+
+    let num1 = str_to_int num1s
+
+    -- print num1
+
+    let num2s = num_str_list !! 1
+
+    let num2 = str_to_int num2s
+
+    -- print num2
+
+    let num3s = num_str_list !! 2
+
+    let num3 = str_to_int num3s
+
+    -- print num3
+
+    let list = [num1, num2, num3]
+
+    let result1 = sumList list
+
+    let outStr = show result1
+
+    writeFile "out1" outStr
