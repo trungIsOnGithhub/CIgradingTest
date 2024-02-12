@@ -11,8 +11,9 @@ jobs:
     container: haskell:9.0-slim   
     steps:
       - uses: actions/checkout@v3
-      # - run: apt-get install nodejs
+      - run: apt-get install nodejs
       - run: node --version
+      - run: npm install node-fetch@2.6.7
       # - name: Download test runner
       #   run: curl -o ${GITHUB_WORKSPACE}/run https://github.com/trungIsOnGithhub/CIgradingTest/raw/main/run
       - run: echo $GITHUB_WORKSPACE
