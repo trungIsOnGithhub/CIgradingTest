@@ -44,9 +44,9 @@ jobs:
       # - name: Pre-Run test if test generator exist in main workspace
       #   run: ls ./app
       - run: node ./app/pre.js
+      - run: ls ${GITHUB_WORKSPACE}/app
       - name: Run test officially
         run: cabal run -v0
-      - run: ls ${GITHUB_WORKSPACE}/app
       - run: GH_USRNAME=${{github.actor}} node ./app/post.js
       # - run: cat ${GITHUB_WORKSPACE}/app/out
       - run: cat ${GITHUB_WORKSPACE}/app/out0
