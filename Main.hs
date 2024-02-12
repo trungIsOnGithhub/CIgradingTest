@@ -59,28 +59,22 @@ main = do
 
     let num_str_list = words first_line
 
-    let num1s = num_str_list !! 0
+    let num4s = num_str_list !! 0
+    let num4 = str_to_int num14
 
-    let num1 = str_to_int num1s
 
-    -- print num1
+    let num5s = num_str_list !! 1
+    let num5 = str_to_int num5s
 
-    let num2s = num_str_list !! 1
 
-    let num2 = str_to_int num2s
+    let num6s = num_str_list !! 2
+    let num6 = str_to_int num6s
 
-    -- print num2
 
-    let num3s = num_str_list !! 2
+    let list = [num4, num5, num6]
 
-    let num3 = str_to_int num3s
+    let result2 = sumList list
 
-    -- print num3
+    let outStr2 = show result2
 
-    let list = [num1, num2, num3]
-
-    let result1 = sumList list
-
-    let outStr = show result1
-
-    writeFile "out1" outStr
+    writeFile "out1" outStr2

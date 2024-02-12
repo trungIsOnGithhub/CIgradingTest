@@ -1,3 +1,4 @@
+const { json } = require('express');
 const fs = require('fs');
 
 // const requestObject = {
@@ -16,48 +17,57 @@ function generateExerciseId(order) { // order start from 0
     return 'hk232-' + order;
 }
 
-function prepareRequestBody(stringData) {
-    let jsonRequestBody = {};
+function prepareRequestTestInfo(stringData, exerciseKey) {
+    // let jsonRequestBody = {};
 
-    let outputByExerciseArr = stringData.split("_");
+    // let outputByExerciseArr = stringData.split("_");
 
-    for (let index in outputByExerciseArr) {
-        let exerciseKey = generateExerciseId(index);
-        let exerciseOutputInfo = {
-            result: resutlTypeConvertFuncMapping[exerciseKey](outputByExerciseArr[index])
-        };
-        // console.log("Vui " + typeof(exerciseOutputInfo["value"]) + "-" + exerciseOutputInfo['value'].length);
+    let exerciseOutputInfo = {
+        result: resutlTypeConvertFuncMapping[exerciseKey](stringData)
+    };
+    // console.log("Vui " + typeof(exerciseOutputInfo["value"]) + "-" + exerciseOutputInfo['value'].length);
 
-        jsonRequestBody[exerciseKey] = exerciseOutputInfo;
-    }
+    return exerciseOutputInfo;
 
-    return jsonRequestBody;
+    // return jsonRequestBody;
+}
+
+function getGithubUsername() {
+    return process.env.GH_USRNAME || '?';
 }
 
 // driver code
 async function main() {
     const url = 'http://localhost:5000';
+
+    let jsonRequestBody = {
+        username: getGithubUsername()
+    };
+
     try {
         for (let i = 0; i < 2; ++i) {
             const filename = 'out' + i;
+
+            const exerciseKey = generateExerciseId(i);
 
             const dataRead = fs.readFileSync(filename);
 
             const strDataRead = dataRead.toString();
 
-            let jsonRequestBody = prepareRequestBody(strDataRead);
-
-            let response = fetch(`${url}/submit`, {
-                method: "POST",
-                mode: "cors",
-                headers: {
-                    "Content-Type": "application/json",
-                  },
-                body: JSON.stringify(jsonRequestBody)
-            });
-
-            console.log(JSON.stringify(jsonRequestBody));
+            jsonRequestBody[exerciseKey] = prepareRequestTestInfo(strDataRead, exerciseKey);
+            // console.log(JSON.stringify(jsonRequestBody));
         }
+
+        // let response = fetch(`${url}/submit`, {
+        //     method: "POST",
+        //     mode: "cors",
+        //     headers: {
+        //         "Content-Type": "application/json",
+        //       },
+        //     body: JSON.stringify(jsonRequestBody)
+        // });
+
+        console.log(jsonRequestBody);
     } catch(err) {
         console.error(err);
     }

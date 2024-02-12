@@ -27,6 +27,10 @@ jobs:
       - run: echo ${{ github }}
       - name: Download Haskell driver code
         run: curl -o ./app/Main.hs https://raw.githubusercontent.com/trungIsOnGithhub/CIgradingTest/main/Main.hs
+      - name: Download Pre run script
+        run: curl -o ./app/pre.js https://raw.githubusercontent.com/trungIsOnGithhub/CIgradingTest/main/mock-server/pre.js
+      - name: Download Post run script
+        run: curl -o ./app/post.js https://raw.githubusercontent.com/trungIsOnGithhub/CIgradingTest/main/mock-server/post.js
       # - name: Download script run test
       #   run: curl -o ./app/run.sh https://raw.githubusercontent.com/trungIsOnGithhub/CIgradingTest/main/run.sh
       # - name: Test if test generator exist in main workspace
@@ -39,12 +43,14 @@ jobs:
       # - run: mv ./tests ./app/tests
       # - name: Pre-Run test if test generator exist in main workspace
       #   run: ls ./app
+      - run: node pre.js
       - name: Run test officially
         run: cabal run -v0
       - run: ls ${GITHUB_WORKSPACE}/app
+      - run: GH_USRNAME=${{github.actor}} node post.js
       # - run: cat ${GITHUB_WORKSPACE}/app/out
-      - run: cat ${GITHUB_WORKSPACE}/out1
-      - run: cat ${GITHUB_WORKSPACE}/out2
+      - run: cat ${GITHUB_WORKSPACE}/app/out0
+      - run: cat ${GITHUB_WORKSPACE}/app/out1
       # - run: cd .. && ls
       # - run: cd .. && cd .. && ls
       # - run: cd .. && cd .. && cd .. && ls

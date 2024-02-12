@@ -1,22 +1,24 @@
 const fs = require('fs');
 
-// const reponseObject = { // response content format
-//     username: "hihi",
-//     'hk232-0': {
-//         args: [69, -68]
-//     },
-//     'hk232-1': {
-//         args: [[8888, -8888, 9999]]
-//     }
-// };
+const reponseObject = { // response content format
+    username: "hihi",
+    tests: {
+        'hk232-0': {
+            args: [69, -68]
+        },
+        'hk232-1': {
+            args: [[8888, -8888, 9999]]
+        }
+    }
+};
 
 function formatArrayArg(arg) {
     argStr = JSON.stringify(arg);
     return argStr.substring(1, argStr.length-1).split(',').join(" ");
 }
 
-function getContetForExercise(responseObject, attr) {
-    let testSuitInfo = responseObject[attr];
+function getTestArgsForExercise(responseObject, attr) {
+    let testSuitInfo = responseObject.tests[attr];
     let content = "";
 
     for (const arg of testSuitInfo['args']) {
@@ -40,16 +42,27 @@ function getContetForExercise(responseObject, attr) {
     return content;
 }
 
+function getHaskellInputFilename(exerciseKey) {
+    return 'in' + exerciseKey.substring(
+        exerciseKey.indexOf('-')+1
+    );
+}
 
 async function main() {
-    const url = 'http://localhost:5000';
+    // const url = 'http://localhost:5000';
     try {
-        let responseContent = await fetch(url);
+    //     let responseContent = await fetch(url);
 
-        responseContent = responseContent.json();
+    //     responseContent = responseContent.json();
 
-        fs.writeFileSync('in0', getContetForExercise(responseContent ,'hk232-0'));
-        fs.writeFileSync('in1', getContetForExercise(responseContent ,'hk232-1'));
+        let responseContent = reponseObject;
+
+        for (const exerciseKey of Object.keys(responseContent.tests)) {
+            let haskellInputFilename = getHaskellInputFilename(exerciseKey);
+
+            fs.writeFileSync(haskellInputFilename,
+                getTestArgsForExercise(responseContent,exerciseKey));
+        }
     } catch(err) {
         console.error(err);
     }
