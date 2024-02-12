@@ -60,7 +60,7 @@ async function main() {
         for (const exerciseKey of Object.keys(responseContent.tests)) {
             let haskellInputFilename = getHaskellInputFilename(exerciseKey);
 
-            fs.writeFileSync('app/'+haskellInputFilename,
+            fs.writeFileSync(haskellInputFilename,
                 getTestArgsForExercise(responseContent,exerciseKey));
         }
     } catch(err) {

@@ -51,13 +51,15 @@ main = do
     -- Test Exercise 2
 
     tests4 <- readFile "in1"
-    let test_lines4 = lines tests4
+    -- let test_lines4 = lines tests4
 
     -- print test_lines2
     
-    let first_line = head test_lines4
+    -- let first_line = head test_lines4
 
-    let num_str_list = words first_line
+    let num_str_list = words tests4
+
+    print tests4
 
     let num4s = num_str_list !! 0
     let num4 = str_to_int num4s
