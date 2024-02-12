@@ -50,12 +50,12 @@ main = do
 
     -- Test Exercise 2
 
-    tests2 <- readFile "in1"
-    let test_lines2 = lines tests2
+    tests4 <- readFile "in1"
+    let test_lines4 = lines tests4
 
     -- print test_lines2
     
-    let first_line = head test_lines2
+    let first_line = head test_lines4
 
     let num_str_list = words first_line
 
