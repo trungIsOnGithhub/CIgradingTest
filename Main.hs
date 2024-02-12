@@ -60,7 +60,7 @@ main = do
     let num_str_list = words first_line
 
     let num4s = num_str_list !! 0
-    let num4 = str_to_int num14
+    let num4 = str_to_int num4s
 
 
     let num5s = num_str_list !! 1
