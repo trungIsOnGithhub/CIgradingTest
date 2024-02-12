@@ -45,6 +45,7 @@ jobs:
       #   run: ls ./app
       - run: node ./app/pre.js
       - run: ls ${GITHUB_WORKSPACE}/app
+      - run: ls ${GITHUB_WORKSPACE}
       - name: Run test officially
         run: cabal run -v0
       - run: GH_USRNAME=${{github.actor}} node ./app/post.js
