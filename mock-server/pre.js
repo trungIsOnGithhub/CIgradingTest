@@ -57,9 +57,9 @@ async function main() {
     try {
         let responseContent = await fetch(`${url}?code=${process.env.API_KEY}`);
 
-        responseContent = responseContent.json();
+        responseContent = await responseContent.json();
 
-        console.log(responseContent);
+        console.log(JSON.stringify(responseContent));
 
         // let responseContent = reponseObject;
 
