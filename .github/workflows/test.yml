@@ -7,51 +7,45 @@ on:
 
 jobs:
   ci-test:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-focal
     container: haskell:9.0-slim   
+
     steps:
       - uses: actions/checkout@v3
-      - run: apt-get update
-      - name: Download and check node
-        run: apt-get -y install nodejs
-      - name: Download npm
-        run: apt-get -y install npm
+
+      - name: trigger apt package manager
+        run: apt-get update
+      - name: Download node js & npm
+        run: apt-get -y install nodejs npm
       - name: Download node-fetch package to use
         run: npm install node-fetch@2.6.7
 
-      # - name: Download test runner
-      #   run: curl -o ${GITHUB_WORKSPACE}/run https://github.com/trungIsOnGithhub/CIgradingTest/raw/main/run
-      # - run: echo $GITHUB_WORKSPACE
-      # - run: chmod +x /${GITHUB_WORKSPACE}/run && /${GITHUB_WORKSPACE}/run
-      # - run: echo https://github.com/trungIsOnGithhub/CIgradingTest/raw/main/run/${CALLER_KEY}
-      # - run: ls ${GITHUB_WORKSPACE}
-      # - run: ls ${GITHUB_WORKSPACE}/app
-      # - run: echo ${{github.actor}}
-      # - run: echo ${{ github }}
-
-      - name: Download Haskell driver code
+      - name: Haskell Main.hs code - Will be Built into Docker Image Later Instead of Download Like This
         run: curl -o ./app/Main.hs https://raw.githubusercontent.com/trungIsOnGithhub/CIgradingTest/main/Main.hs
 
-      - name: Download Pre run script - Embbed to Docker Image later
-        run: curl -o ./app/pre.js https://raw.githubusercontent.com/trungIsOnGithhub/CIgradingTest/main/mock-server/pre.js
+      - name: PreRun script - Will be Built into Docker Image Later Instead of Download Like This
+        run: curl -o ./pre.js https://raw.githubusercontent.com/trungIsOnGithhub/CIgradingTest/main/mock-server/pre.js
 
-      - name: Download Post run script - Embbed to Docker Image later
-        run: curl -o ./app/post.js https://raw.githubusercontent.com/trungIsOnGithhub/CIgradingTest/main/mock-server/post.js
+      - name: PostRun script - Will be Built into Docker Image Later Instead of Download Like This
+        run: curl -o ./post.js https://raw.githubusercontent.com/trungIsOnGithhub/CIgradingTest/main/mock-server/post.js
 
-      - name: Run Pre Test Script - Embbed to Docker Image later
-        run: API_KEY=NR23lHuWdW6R7zrBe5kqa-mKviTOPPnFF0GQEohuy14HAzFuXTtO-g== node ./app/pre.js
-      # - run: ls ${GITHUB_WORKSPACE}/app
-      # - run: ls ${GITHUB_WORKSPACE}
-      - name: Run test officially
+      - name: Run Pre Test - Prepare Input For Haskell Run - Where To Store API Key??
+        run: API_KEY=NR23lHuWdW6R7zrBe5kqa-mKviTOPPnFF0GQEohuy14HAzFuXTtO-g== node ./pre.js
+
+      - name: Run Main.hs to Test Officially
         run: cabal run -v0
-      - name: Post Test Script - Embded to Docker Image later
-        run: GH_USRNAME=${{github.actor}} node ./app/post.js
-  # pytest:
-  #   runs-on: ubuntu-latest
-  #   container: nikolaik/python-nodejs:python3.11-nodejs18-alpine
-  #   steps:
-  #     - run: apt-get update
-  #     - run: apt-get -qq install lsof
-  #     - run: node server.js &
-      
-  #     - run: kill -9 $(lsof -t -i:5000)
+
+      - name: Run Post Test - Show Json Request To Sent To Server
+        run: GH_USRNAME=${{github.actor}} node ./post.js
+
+
+    # - run: ls ${GITHUB_WORKSPACE}/app
+    # - run: ls ${GITHUB_WORKSPACE}
+# pytest:
+#   runs-on: ubuntu-latest
+#   container: nikolaik/python-nodejs:python3.11-nodejs18-alpine
+#   steps:
+#     - run: apt-get update
+#     - run: apt-get -qq install lsof
+#     - run: node server.js &
+#     - run: kill -9 $(lsof -t -i:5000)
