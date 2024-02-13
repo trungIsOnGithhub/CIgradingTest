@@ -23,16 +23,10 @@ main = do
     let num2 = str_to_int num2s
     let test_lines2 = tail test_lines1
 
-    -- print num2
-
-    -- let num3s = head test_lines2
-    -- let num3 = str_to_int num3s
-
-    -- print num3
-
     let result1 = addNum num1 num2
     let outStr = show result1
     writeFile "out0" outStr
+
 
 
     -- TEST EXERCISE 2
@@ -40,7 +34,6 @@ main = do
     tests4 <- readFile "inexercise1"
     let num_str_list = words tests4
 
-    -- print tests4
 
     let num4s = num_str_list !! 0
     let num4 = str_to_int num4s
