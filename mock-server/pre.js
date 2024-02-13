@@ -5,11 +5,14 @@ const reponseObject = { // response content format
     username: "example-username",
     tests: {
         'lntc-hk232-exercise-0': {
-            // array of args, each element is an argument
-            args: [69, -68]
+            test1: {
+                args: [69, -68]
+            }
         },
         'lntc-hk232-exercise-1': {
-            args: [[8888, -8888, 9999]]
+            test1: {
+                args: [[8888, -8888, 9999]]
+            }
         }
     }
 };
@@ -19,11 +22,11 @@ function formatArrayArg(arg) {
     return argStr.substring(1, argStr.length-1).split(',').join(" ");
 }
 
-function getTestArgsForExercise(responseObject, attr) {
-    let testSuitInfo = responseObject.tests[attr];
+function getTestArgsForExercise(responseObject, attr, testcaseKey) {
+    let testSuitInfo = responseObject[attr];
     let content = "";
 
-    for (const arg of testSuitInfo['args']) {
+    for (const arg of testSuitInfo[testcaseKey]['args']) {
         if  (typeof arg === 'object' &&
             typeof arg.length !== 'number') {
             throw new Error("Invalid Argument For Function!");
@@ -35,19 +38,15 @@ function getTestArgsForExercise(responseObject, attr) {
         }
         
         content += arg + "\n";
-
-        // for (value of valueArray) {
-        //     content += value + "\n";
-        // }
     }
 
     return content;
 }
 
-function getHaskellInputFilename(exerciseKey) {
+function getHaskellInputFilename(exerciseKey, testcaseKey) {
     return 'in' + exerciseKey.substring(
         exerciseKey.lastIndexOf('-')+1
-    );
+    ) + testcaseKey;
 }
 
 
@@ -64,10 +63,14 @@ async function main() {
         // let responseContent = reponseObject;
 
         for (const exerciseKey of Object.keys(responseContent.tests)) {
-            let haskellInputFilename = getHaskellInputFilename(exerciseKey);
+            for (const testcaseKey of Object.keys(responseContent.tests[exerciseKey])) {
+                let haskellInputFilename = getHaskellInputFilename(exerciseKey, testcaseKey);
 
-            fs.writeFileSync(haskellInputFilename,
-                getTestArgsForExercise(responseContent,exerciseKey));
+                // console.log(haskellInputFilename);
+
+                fs.writeFileSync(haskellInputFilename,
+                    getTestArgsForExercise(responseContent.tests, exerciseKey, testcaseKey));
+            }
         }
 
         // let resp = await fetch('https://reqres.in/api/users/2');
