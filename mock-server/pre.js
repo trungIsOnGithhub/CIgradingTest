@@ -4,11 +4,11 @@ const fs = require('fs');
 const reponseObject = { // response content format
     username: "example-username",
     tests: {
-        'lntc-hk232-exercise0': {
+        'lntc-hk232-exercise-0': {
             // array of args, each element is an argument
             args: [69, -68]
         },
-        'lntc-hk232-exercise1': {
+        'lntc-hk232-exercise-1': {
             args: [[8888, -8888, 9999]]
         }
     }
@@ -46,7 +46,7 @@ function getTestArgsForExercise(responseObject, attr) {
 
 function getHaskellInputFilename(exerciseKey) {
     return 'in' + exerciseKey.substring(
-        exerciseKey.indexOf('-')+1
+        exerciseKey.lastIndexOf('-')+1
     );
 }
 

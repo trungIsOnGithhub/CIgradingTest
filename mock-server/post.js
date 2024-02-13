@@ -2,13 +2,13 @@ const fetch = require('node-fetch');
 const fs = require('fs');
 
 const resutlTypeConvertFuncMapping = {
-    'lntc-hk232-exercise0': convertInt,
-    'lntc-hk232-exercise1': convertInt,
-    'lntc-hk232-exercise2': convertArray(convertInt)
+    'lntc-hk232-exercise-0': convertInt,
+    'lntc-hk232-exercise-1': convertInt,
+    'lntc-hk232-exercise-2': convertArray(convertInt)
 }
 
 function generateExerciseId(order) { // order start from 0
-    return 'lntc-hk232-exercise' + order;
+    return 'lntc-hk232-exercise-' + order;
 }
 
 function prepareRequestTestInfo(stringData, exerciseKey) {
