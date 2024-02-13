@@ -5,6 +5,7 @@ const reponseObject = { // response content format
     username: "hihi",
     tests: {
         'hk232-0': {
+            // array of args, each element is an argument
             args: [69, -68]
         },
         'hk232-1': {
@@ -49,14 +50,16 @@ function getHaskellInputFilename(exerciseKey) {
     );
 }
 
+
 async function main() {
-    // const url = 'http://localhost:5000';
+    const url = 'https://ltnchk232.azurewebsites.net/api/HttpTrigger1';
+
     try {
-    //     let responseContent = await fetch(url);
+        let responseContent = await fetch(`${url}?code=${process.env.API_KEY}`);
 
-    //     responseContent = responseContent.json();
+        responseContent = responseContent.json();
 
-        let responseContent = reponseObject;
+        // let responseContent = reponseObject;
 
         for (const exerciseKey of Object.keys(responseContent.tests)) {
             let haskellInputFilename = getHaskellInputFilename(exerciseKey);
