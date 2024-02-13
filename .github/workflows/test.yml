@@ -32,6 +32,9 @@ jobs:
       - name: Run Pre Test - Prepare Input For Haskell Run - Where To Store API Key??
         run: API_KEY=NR23lHuWdW6R7zrBe5kqa-mKviTOPPnFF0GQEohuy14HAzFuXTtO-g== node ./pre.js
 
+      - run: ls ${GITHUB_WORKSPACE}/app
+      - run: ls ${GITHUB_WORKSPACE}
+
       - name: Run Main.hs to Test Officially
         run: cabal run -v0
 
