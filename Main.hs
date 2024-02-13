@@ -1,7 +1,16 @@
 module Main where
 
-import System.Exit
-import ToDo
+-- import System.Exit
+-- import ToDo
+
+-- Exercise 1 goes here
+addNum :: Int -> Int -> Int
+addNum num1 num2 = num1 + num2
+
+-- Exercise 2 goes here
+sumList :: Num a => [a] -> a
+sumList [] = 0
+sumList (x:xs) = x + sumList xs
 
 str_to_int :: String -> Int
 str_to_int str = read str
@@ -36,10 +45,10 @@ main = do
 
     print num2
 
-    let num3s = head test_lines2
-    let num3 = str_to_int num3s
+    -- let num3s = head test_lines2
+    -- let num3 = str_to_int num3s
 
-    print num3
+    -- print num3
 
     let result1 = addNum num1 num2
 
