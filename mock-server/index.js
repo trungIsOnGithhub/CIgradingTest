@@ -10,11 +10,11 @@ app.use((req, res, next) => {
 
 app.get('/',(req,res)=>{
     const reponseObject = {
-        username: "hihi",
-        'hk232-0': {
+        username: "example-username",
+        'lntc-hk232-exercise0': {
             args: [69, -68]
         },
-        'hk232-1': {
+        'lntc-hk232-exercise1': {
             args: [[8888, -8888, 9999]]
         }
     };
@@ -25,8 +25,8 @@ app.get('/',(req,res)=>{
 
 app.post('/submit', (req, res) => {
     console.log(req.body.username);
-    console.log(req.body['hk232-1'].result);
-    console.log(req.body['hk232-1'].result);
+    console.log(req.body['lntc-hk232-exercise1'].result);
+    console.log(req.body['lntc-hk232-exercise1'].result);
     res.send("Success");
 });
 

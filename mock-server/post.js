@@ -1,20 +1,14 @@
 const fetch = require('node-fetch');
 const fs = require('fs');
 
-// const requestObject = {
-//     hk232-0: {
-//         result: 
-//     },
-// };
-
 const resutlTypeConvertFuncMapping = {
-    'hk232-0': convertInt,
-    'hk232-1': convertInt,
-    'hk232-2': convertArray(convertInt)
+    'lntc-hk232-exercise0': convertInt,
+    'lntc-hk232-exercise1': convertInt,
+    'lntc-hk232-exercise2': convertArray(convertInt)
 }
 
 function generateExerciseId(order) { // order start from 0
-    return 'hk232-' + order;
+    return 'lntc-hk232-exercise' + order;
 }
 
 function prepareRequestTestInfo(stringData, exerciseKey) {
@@ -40,7 +34,7 @@ function getGithubUsername() {
 
 // driver code
 async function main() {
-    const url = 'http://localhost:5000';
+    // const url = 'http://localhost:5000';
 
     let jsonRequestBody = {
         username: getGithubUsername()

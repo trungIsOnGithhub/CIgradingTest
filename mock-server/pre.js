@@ -2,13 +2,13 @@ const fetch = require('node-fetch');
 const fs = require('fs');
 
 const reponseObject = { // response content format
-    username: "hihi",
+    username: "example-username",
     tests: {
-        'hk232-0': {
+        'lntc-hk232-exercise0': {
             // array of args, each element is an argument
             args: [69, -68]
         },
-        'hk232-1': {
+        'lntc-hk232-exercise1': {
             args: [[8888, -8888, 9999]]
         }
     }
