@@ -1,3 +1,4 @@
+const fetch = require('node-fetch');
 const fs = require('fs');
 
 const reponseObject = { // response content format
@@ -63,6 +64,12 @@ async function main() {
             fs.writeFileSync(haskellInputFilename,
                 getTestArgsForExercise(responseContent,exerciseKey));
         }
+
+        let resp = await fetch('https://reqres.in/api/users/2');
+
+        let json = await resp.json();
+
+        console.log(json);
     } catch(err) {
         console.error(err);
     }
