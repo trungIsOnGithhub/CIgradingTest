@@ -23,7 +23,9 @@ function prepareRequestTestInfo(stringData, exerciseKey) {
     // let outputByExerciseArr = stringData.split("_");
 
     let exerciseOutputInfo = {
-        result: resutlTypeConvertFuncMapping[exerciseKey](stringData)
+        test1: {
+            result: resutlTypeConvertFuncMapping[exerciseKey](stringData)
+        }
     };
     // console.log("Vui " + typeof(exerciseOutputInfo["value"]) + "-" + exerciseOutputInfo['value'].length);
 
@@ -68,6 +70,7 @@ async function main() {
         // });
 
         console.log(jsonRequestBody);
+
     } catch(err) {
         console.error(err);
     }

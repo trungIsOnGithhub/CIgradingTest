@@ -65,11 +65,11 @@ async function main() {
                 getTestArgsForExercise(responseContent,exerciseKey));
         }
 
-        let resp = await fetch('https://reqres.in/api/users/2');
+        // let resp = await fetch('https://reqres.in/api/users/2');
 
-        let json = await resp.json();
+        // let json = await resp.json();
 
-        console.log(json);
+        // console.log(json);
     } catch(err) {
         console.error(err);
     }
