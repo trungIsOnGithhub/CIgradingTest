@@ -35,7 +35,7 @@ jobs:
       - name: Run Main.hs to Test Officially
         run: cabal run -v0
 
-      - name: Run Post Test - Show Json Request To Sent To Server
+      - name: Run Post Test - Show JSON Execute Result Request To Sent To Server
         run: GH_USRNAME=${{github.actor}} node ./post.js
 
 
