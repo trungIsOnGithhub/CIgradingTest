@@ -31,7 +31,7 @@ main = do
     -- print num3
 
     let result1 = addNum num1 num2
-    let outStr = show result
+    let outStr = show result1
     writeFile "out0" outStr
 
 
