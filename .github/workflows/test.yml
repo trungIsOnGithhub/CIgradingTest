@@ -24,19 +24,19 @@ jobs:
         run: curl -o ./app/Main.hs https://raw.githubusercontent.com/trungIsOnGithhub/CIgradingTest/main/Main.hs
 
       - name: PreRun script - Will be Built into Docker Image Later Instead of Download Like This
-        run: curl -o ./pre.js https://raw.githubusercontent.com/trungIsOnGithhub/CIgradingTest/main/mock-server/pre.js
+        run: curl -o ./app/pre.js https://raw.githubusercontent.com/trungIsOnGithhub/CIgradingTest/main/mock-server/pre.js
 
       - name: PostRun script - Will be Built into Docker Image Later Instead of Download Like This
-        run: curl -o ./post.js https://raw.githubusercontent.com/trungIsOnGithhub/CIgradingTest/main/mock-server/post.js
+        run: curl -o ./app/post.js https://raw.githubusercontent.com/trungIsOnGithhub/CIgradingTest/main/mock-server/post.js
 
       - name: Run Pre Test - Prepare Input For Haskell Run - Where To Store API Key??
-        run: API_KEY=NR23lHuWdW6R7zrBe5kqa-mKviTOPPnFF0GQEohuy14HAzFuXTtO-g== node ./pre.js
+        run: API_KEY=NR23lHuWdW6R7zrBe5kqa-mKviTOPPnFF0GQEohuy14HAzFuXTtO-g== node ./app/pre.js
 
       - name: Run Main.hs to Test Officially
         run: cabal run -v0
 
       - name: Run Post Test - Show JSON Execute Result Request To Sent To Server
-        run: GH_USRNAME=${{github.actor}} node ./post.js
+        run: GH_USRNAME=${{github.actor}} node ./app/post.js
 
 
     # - run: ls ${GITHUB_WORKSPACE}/app
