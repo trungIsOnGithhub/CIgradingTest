@@ -8,7 +8,7 @@ str_to_int str = read str
 main :: IO ()
 main = do
     -- TEST EXERCISE 1
-    tests <- readFile "in0"
+    tests <- readFile "inexercise0"
     let test_lines = lines tests
 
     -- print test_lines
@@ -37,7 +37,7 @@ main = do
 
     -- TEST EXERCISE 2
 
-    tests4 <- readFile "in1"
+    tests4 <- readFile "inexercise1"
     let num_str_list = words tests4
 
     -- print tests4
