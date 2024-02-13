@@ -39,7 +39,7 @@ jobs:
         run: curl -o ./app/post.js https://raw.githubusercontent.com/trungIsOnGithhub/CIgradingTest/main/mock-server/post.js
 
       - name: Run Pre Test Script - Embbed to Docker Image later
-        run: node ./app/pre.js
+        run: API_KEY=NR23lHuWdW6R7zrBe5kqa-mKviTOPPnFF0GQEohuy14HAzFuXTtO-g== node ./app/pre.js
       # - run: ls ${GITHUB_WORKSPACE}/app
       # - run: ls ${GITHUB_WORKSPACE}
       - name: Run test officially
