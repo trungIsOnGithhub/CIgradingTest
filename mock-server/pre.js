@@ -59,6 +59,8 @@ async function main() {
 
         responseContent = responseContent.json();
 
+        console.log(responseContent);
+
         // let responseContent = reponseObject;
 
         for (const exerciseKey of Object.keys(responseContent.tests)) {
