@@ -1,0 +1,32 @@
+{
+    "description": "Get Test Info From Server Format",
+
+    "tests": {
+        "lntc-hk232-exercise0": {
+            "test1": {
+                "args": [69,-68]
+            }
+        },
+        "lntc-hk232-exercise1": {
+            "test1": {
+                "args": [[8888,-8888,9999]]
+            }
+        }
+    }
+}
+
+{
+    "description": "Submit Execution Ouput To Server Format",
+
+    "username": "trungIsOnGithhub",
+    "lntc-hk232-exercise-0": {
+        "test1": {
+            "result": 1
+        }
+    },
+    "lntc-hk232-exercise-1": {
+        "test1": {
+            "result": 9999
+        }
+    }
+}
