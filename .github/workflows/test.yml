@@ -20,26 +20,30 @@ jobs:
       - name: Download node-fetch package to use
         run: npm install node-fetch@2.6.7
 
-      - name: Haskell Main.hs code - Will be Built into Docker Image Later Instead of Download Like This
-        run: curl -o ./app/Main.hs https://raw.githubusercontent.com/trungIsOnGithhub/CIgradingTest/main/Main.hs
+      # - name: Haskell Main.hs code - Will be Built into Docker Image Later Instead of Download Like This
+      #   run: curl -o ./app/Main.hs https://raw.githubusercontent.com/trungIsOnGithhub/CIgradingTest/main/Main.hs
 
-      - name: PreRun script - Will be Built into Docker Image Later Instead of Download Like This
-        run: curl -o ./pre.js https://raw.githubusercontent.com/trungIsOnGithhub/CIgradingTest/main/mock-server/pre.js
+      # - name: PreRun script - Will be Built into Docker Image Later Instead of Download Like This
+      #   run: curl -o ./pre.js https://raw.githubusercontent.com/trungIsOnGithhub/CIgradingTest/main/mock-server/pre.js
 
-      - name: PostRun script - Will be Built into Docker Image Later Instead of Download Like This
-        run: curl -o ./post.js https://raw.githubusercontent.com/trungIsOnGithhub/CIgradingTest/main/mock-server/post.js
+      # - name: PostRun script - Will be Built into Docker Image Later Instead of Download Like This
+      #   run: curl -o ./post.js https://raw.githubusercontent.com/trungIsOnGithhub/CIgradingTest/main/mock-server/post.js
 
-      - name: Run Pre Test - Prepare Input For Haskell Run - Where To Store API Key??
-        run: API_KEY=NR23lHuWdW6R7zrBe5kqa-mKviTOPPnFF0GQEohuy14HAzFuXTtO-g== node ./pre.js
+      # - name: Run Pre Test - Prepare Input For Haskell Run - Where To Store API Key??
+      #   run: API_KEY=NR23lHuWdW6R7zrBe5kqa-mKviTOPPnFF0GQEohuy14HAzFuXTtO-g== node ./pre.js
 
       - run: ls ${GITHUB_WORKSPACE}/app
       - run: ls ${GITHUB_WORKSPACE}
 
+      - run: ls
+
+      - run: cd opt
+
       - name: Run Main.hs to Test Officially
         run: cabal run -v0
 
-      - name: Run Post Test - Show JSON Execute Result Request To Sent To Server
-        run: GH_USRNAME=${{github.actor}} node ./post.js
+      # - name: Run Post Test - Show JSON Execute Result Request To Sent To Server
+      #   run: GH_USRNAME=${{github.actor}} node ./post.js
 
       # - run: ls ${GITHUB_WORKSPACE}
       # - run: ls ${GITHUB_WORKSPACE}/app
