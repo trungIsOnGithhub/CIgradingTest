@@ -37,6 +37,8 @@ jobs:
 
       - run: ls
 
+      - run: ls /opt/
+
       - run: mv /opt/Main.hs ./app/
 
       - name: Run Main.hs to Test Officially
