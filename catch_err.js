@@ -7,8 +7,10 @@ ls.then(result => {
 		console.log('RUN SUCCESS');
 	})
 	.catch(err => {
-		console.log('OUT: ' + err.stdout);
+		console.log('ERR: ' + err.stdout);
 		console.log('ERR: ' + err.stderr);
-		console.log('UNEXPECTED ERROR!! - PLEASE CHECK YOUR EXERCISE FORMAT!!');
-		process.exit(1);
+		//throw new Error('UNEXPECTED ERROR!! - PLEASE CHECK YOUR EXERCISE FORMAT!!');
+
+		let tests = undefined;
+		tests.run_check();
 	});
