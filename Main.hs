@@ -8,6 +8,7 @@ str_to_int str = read str
 main :: IO ()
 main = do
     -- TEST EXERCISE 1
+    -- reading input with numbers, output with numbers
     tests <- readFile "in0test1"
     let test_lines = lines tests
 
@@ -30,9 +31,11 @@ main = do
 
 
     -- TEST EXERCISE 2
+    -- reading input with list
+    -- output number
 
-    tests4 <- readFile "in1test1"
-    let num_str_list = words tests4
+    tests2 <- readFile "in1test1"
+    let num_str_list = words tests2
 
 
     let num4s = num_str_list !! 0
@@ -52,3 +55,18 @@ main = do
     let result2 = sumList list
     let outStr2 = show result2
     writeFile "out1" outStr2
+    
+    
+    -- TEST EXERCISE 3
+    -- reading input string
+    -- output string
+    
+    tests3 <- readFile "in2test1"
+    let num_str_list2 = words tests3
+    
+    let num7s = num_str_list !! 0
+    let num7 = str_to_int num7s
+    
+    let result3 = grayCode num7
+    let outStr3 = show result3
+    writeFile "out2" outStr3
