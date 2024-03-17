@@ -37,7 +37,7 @@ jobs:
 
       - run: ls
 
-      - run: cd opt
+      - run: mv /opt/Main.hs ./app/
 
       - name: Run Main.hs to Test Officially
         run: cabal run -v0
