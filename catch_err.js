@@ -9,8 +9,5 @@ ls.then(result => {
 	.catch(err => {
 		console.log('ERR: ' + err.stdout);
 		console.log('ERR: ' + err.stderr);
-		//throw new Error('UNEXPECTED ERROR!! - PLEASE CHECK YOUR EXERCISE FORMAT!!');
-
-		let tests = undefined;
-		tests.run_check();
+		throw new Error('UNEXPECTED ERROR!! - PLEASE CHECK YOUR EXERCISE FORMAT!!');	
 	});
