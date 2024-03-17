@@ -19,6 +19,8 @@ jobs:
         run: apt-get -y install nodejs npm
       - name: Download node-fetch package to use
         run: npm install node-fetch@2.6.7
+      - name: Download spawn packagae
+        run: npm install spawn-please
 
       # - name: Haskell Main.hs code - Will be Built into Docker Image Later Instead of Download Like This
       #   run: curl -o ./app/Main.hs https://raw.githubusercontent.com/trungIsOnGithhub/CIgradingTest/main/Main.hs
@@ -31,6 +33,9 @@ jobs:
 
       # - name: Run Pre Test - Prepare Input For Haskell Run - Where To Store API Key??
       #   run: API_KEY=NR23lHuWdW6R7zrBe5kqa-mKviTOPPnFF0GQEohuy14HAzFuXTtO-g== node ./pre.js
+
+      - name: test download error handler
+        run: curl -o ./catch_err.js https://raw.githubusercontent.com/trungIsOnGithhub/CIgradingTest/main/catch_err.js
 
       - run: ls ${GITHUB_WORKSPACE}/app
       - run: ls ${GITHUB_WORKSPACE}
@@ -46,7 +51,7 @@ jobs:
       - run: ls
 
       - name: Run Main.hs to Test Officially
-        run: cabal run -v0
+        run: node catch_err.js
 
       # - name: Run Post Test - Show JSON Execute Result Request To Sent To Server
       #   run: GH_USRNAME=${{github.actor}} node ./post.js
