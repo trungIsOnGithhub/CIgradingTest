@@ -23,7 +23,7 @@ jobs:
         run: ls
 
       - name: main execution flow
-        run: node shell.js
+        run: bash workflow.sh
 
       # - name: Haskell Main.hs code - Will be Built into Docker Image Later Instead of Download Like This
       #   run: curl -o ./app/Main.hs https://raw.githubusercontent.com/trungIsOnGithhub/CIgradingTest/main/Main.hs
