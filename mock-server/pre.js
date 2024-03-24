@@ -72,8 +72,8 @@ async function main() {
 
                 console.log(haskellInputFilename);
 
-                // fs.writeFileSync(haskellInputFilename,
-                    // getTestArgsForExercise(responseContent.tests, exerciseKey, testcaseKey));
+                fs.writeFileSync(haskellInputFilename,
+                    getTestArgsForExercise(responseContent.tests, exerciseKey, testcaseKey));
             }
         }
 
