@@ -11,8 +11,8 @@ jobs:
     container:
       image: trungisondockerhub/lntc_hk232_env_test2:latest
       credentials:
-        username: ${{ secrets.CONTAINER_REGISTRY_USERNAME }}
-        password: ${{ secrets.CONTAINER_REGISTRY_KEY }}
+        username: ${secrets.CONTAINER_REGISTRY_USERNAME}
+        password: ${secrets.CONTAINER_REGISTRY_KEY}
 
     steps:
       - run: ls /opt/
