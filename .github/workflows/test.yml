@@ -7,20 +7,23 @@ on:
 
 jobs:
   ci-test:
-    runs-on: ubuntu-latest
-    container: trungisondockerhub/lntc_hk232_env_test2
+    runs-on: ubuntu-18.04
+    container:
+      image: trungisondockerhub/lntc_hk232_env_test2:latest
 
     steps:
+      - run: ls /opt/
+
       - uses: actions/checkout@v3
 
-      - name: trigger apt package manager
-        run: apt-get update
-      - name: Download node js & npm
-        run: apt-get -y install nodejs npm
-      - name: Download node-fetch package to use
-        run: npm install node-fetch@2.6.7
-      - name: Download spawn packagae
-        run: npm install spawn-please
+      - name: preparation script files
+        run: bash prepare_script_files.sh ${GITHUB_WORKSPACE}
+
+      - name: check dir
+        run: ls
+
+      - name: main execution flow
+        run: node shell.js
 
       # - name: Haskell Main.hs code - Will be Built into Docker Image Later Instead of Download Like This
       #   run: curl -o ./app/Main.hs https://raw.githubusercontent.com/trungIsOnGithhub/CIgradingTest/main/Main.hs
@@ -34,24 +37,22 @@ jobs:
       # - name: Run Pre Test - Prepare Input For Haskell Run - Where To Store API Key??
       #   run: API_KEY=NR23lHuWdW6R7zrBe5kqa-mKviTOPPnFF0GQEohuy14HAzFuXTtO-g== node ./pre.js
 
-      - name: test download error handler
-        run: curl -o ./catch_err.js https://raw.githubusercontent.com/trungIsOnGithhub/CIgradingTest/main/catch_err.js
+      # - name: test download error handler
+      #   run: curl -o ./catch_err.js https://raw.githubusercontent.com/trungIsOnGithhub/CIgradingTest/main/catch_err.js
 
-      - run: ls ${GITHUB_WORKSPACE}/app
-      - run: ls ${GITHUB_WORKSPACE}
+      # - run: ls ${GITHUB_WORKSPACE}/app
+      # - run: ls ${GITHUB_WORKSPACE}
 
-      - run: ls
+      # - run: ls
 
-      - run: ls /opt/
+      # - run: mv /opt/Main.hs ./app/
 
-      - run: mv /opt/Main.hs ./app/
+      # - run: mv /opt/mock-server ./
 
-      - run: mv /opt/mock-server ./
+      # - run: ls
 
-      - run: ls
-
-      - name: Run Main.hs to Test Officially
-        run: node catch_err.js
+      # - name: Run Main.hs to Test Officially
+      #   run: node catch_err.js
 
       # - name: Run Post Test - Show JSON Execute Result Request To Sent To Server
       #   run: GH_USRNAME=${{github.actor}} node ./post.js
