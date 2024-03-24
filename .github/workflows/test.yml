@@ -17,7 +17,7 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: preparation script files
-        run: bash prepare_script_files.sh ${GITHUB_WORKSPACE}
+        run: bash /prepare_script_files.sh ${GITHUB_WORKSPACE}
 
       - name: check dir
         run: ls
