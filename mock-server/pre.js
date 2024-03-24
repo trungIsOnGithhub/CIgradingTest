@@ -53,8 +53,6 @@ function getHaskellInputFilename(exerciseKey, testcaseKey) {
 async function main() {
     const url = 'https://ltnchk232.azurewebsites.net/api/HttpTrigger1';
 
-    process.env.API_KEY = "NR23lHuWdW6R7zrBe5kqa-mKviTOPPnFF0GQEohuy14HAzFuXTtO-g==";
-
     if (!process.env.API_KEY) {
         throw new Error('Error Resolving API Key!');
     }

@@ -1,5 +1,5 @@
 {
-  "name": "mock-server",
+  "name": "ltnc-hk232-script",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,6 +9,7 @@
   "author": "trungnv",
   "license": "ISC",
   "dependencies": {
+    "encoding": "^0.1.0",
     "node-fetch": "^2.6.7",
     "spawn-please": "3.0.0"
   }

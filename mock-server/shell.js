@@ -12,13 +12,13 @@ pre_execution_script
 .then(result => {
 	console.log('PRE OUTPUT: ' + result.stdout);
 
-	compile_code_command
-	.then(result => {
-		console.log('COMPILATION OUTPUT: ' + result.stdout);
+	// compile_code_command
+	// .then(result => {
+	// 	console.log('COMPILATION OUTPUT: ' + result.stdout);
 
 		execute_code_command
 		.then(result => {
-			console.log('COMPILATION OUTPUT: ' + result.stdout);
+			console.log('EXECUTION OUTPUT: ' + result.stdout);
 
 			post_execution_script
 			.then(result => {
@@ -29,13 +29,13 @@ pre_execution_script
 			})
 		})
 		.catch(err => {
-			console.log('COMPILATION ERROR: ' + result.stderr);
+			console.log('EXECUTION ERROR: ' + result.stderr);
 		})
-	})
-	.catch(err => {
-		console.log('COMPILATION OUTPUT: ' + result.stdout);
-		throw new Error('UNEXPECTED ERROR!! - PLEASE CHECK YOUR EXERCISE FORMAT!!');
-	});
+	// })
+	// .catch(err => {
+	// 	console.log('COMPILATION OUTPUT: ' + result.stdout);
+	// 	throw new Error('UNEXPECTED ERROR!! - PLEASE CHECK YOUR EXERCISE FORMAT!!');
+	// });
 })
 .catch(err => {
 	console.log('PRE OUTPUT: ' + err.stdout);
