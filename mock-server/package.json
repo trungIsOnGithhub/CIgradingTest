@@ -9,7 +9,7 @@
   "author": "trungnv",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.18.2",
-    "node-fetch": "^2.6.7"
+    "node-fetch": "^2.6.7",
+    "spawn-please": "3.0.0"
   }
 }

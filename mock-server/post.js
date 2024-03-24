@@ -21,7 +21,6 @@ function prepareRequestTestInfo(stringData, exerciseKey) {
             result: resutlTypeConvertFuncMapping[exerciseKey](stringData)
         }
     };
-    // console.log("Vui " + typeof(exerciseOutputInfo["value"]) + "-" + exerciseOutputInfo['value'].length);
 
     return exerciseOutputInfo;
 
@@ -42,7 +41,7 @@ async function main() {
 
     try {
         for (let i = 0; i < 2; ++i) {
-            const filename = 'out' + i;
+            const filename = 'out' + i + 'test1';
 
             const exerciseKey = generateExerciseId(i);
 

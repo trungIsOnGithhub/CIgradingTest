@@ -64,6 +64,6 @@ execute_exercise_2 tuple = do
 
 main :: IO ()
 main = do
-    execute_exercise_0 ("in0", "out0test1")
-    execute_exercise_1 ("in1", "out1test1")
+    execute_exercise_0 ("in0test1", "out0test1")
+    execute_exercise_1 ("in1test1", "out1test1")
     -- execute_exercise_2

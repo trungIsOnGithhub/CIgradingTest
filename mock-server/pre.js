@@ -53,6 +53,12 @@ function getHaskellInputFilename(exerciseKey, testcaseKey) {
 async function main() {
     const url = 'https://ltnchk232.azurewebsites.net/api/HttpTrigger1';
 
+    process.env.API_KEY = "NR23lHuWdW6R7zrBe5kqa-mKviTOPPnFF0GQEohuy14HAzFuXTtO-g==";
+
+    if (!process.env.API_KEY) {
+        throw new Error('Error Resolving API Key!');
+    }
+
     try {
         let responseContent = await fetch(`${url}?code=${process.env.API_KEY}`);
 
@@ -66,18 +72,13 @@ async function main() {
             for (const testcaseKey of Object.keys(responseContent.tests[exerciseKey])) {
                 let haskellInputFilename = getHaskellInputFilename(exerciseKey, testcaseKey);
 
-                // console.log(haskellInputFilename);
+                console.log(haskellInputFilename);
 
-                fs.writeFileSync(haskellInputFilename,
-                    getTestArgsForExercise(responseContent.tests, exerciseKey, testcaseKey));
+                // fs.writeFileSync(haskellInputFilename,
+                    // getTestArgsForExercise(responseContent.tests, exerciseKey, testcaseKey));
             }
         }
 
-        // let resp = await fetch('https://reqres.in/api/users/2');
-
-        // let json = await resp.json();
-
-        // console.log(json);
     } catch(err) {
         console.error(err);
     }
