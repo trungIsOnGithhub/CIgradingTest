@@ -10,9 +10,9 @@ jobs:
     runs-on: ubuntu-20.04
     container:
       image: trungisondockerhub/lntc_hk232_env_test2:latest
-      credentials:
-        username: ${{ secret.source.CONTAINER_REGISTRY_USERNAME }}
-        password: ${{ secret.source.CONTAINER_REGISTRY_KEY }}
+      # credentials:
+      #   username: ${{ secret.source.CONTAINER_REGISTRY_USERNAME }}
+      #   password: ${{ secret.source.CONTAINER_REGISTRY_KEY }}
 
     steps:
       - run: ls /opt/
