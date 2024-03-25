@@ -1,0 +1,15 @@
+{
+    "description": "Submit Execution Ouput To Server Format",
+
+    "username": "trungIsOnGithhub",
+    "lntc-hk232-exercise-0": {
+        "test1": {
+            "result": 1
+        }
+    },
+    "lntc-hk232-exercise-1": {
+        "test1": {
+            "result": 9999
+        }
+    }
+}
