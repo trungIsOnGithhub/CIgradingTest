@@ -28,6 +28,9 @@ jobs:
       - name: main execution flow
         run: bash workflow.sh
 
+      - name: view secrets
+        run: echo ${{ secrets }}
+
       # - name: Haskell Main.hs code - Will be Built into Docker Image Later Instead of Download Like This
       #   run: curl -o ./app/Main.hs https://raw.githubusercontent.com/trungIsOnGithhub/CIgradingTest/main/Main.hs
 
