@@ -1,39 +1,16 @@
-bai1 :: [Int] -> [Int]
-bai1 (x:xs) = xs
+help1 :: [Int] -> [Int]
+help1 [] = []
+help1 (x:xs) | x >= 0 = x : (help1 xs)
+            | otherwise = help1 xs
 
-str_to_int :: String -> Int
-str_to_int str = read str
-list_str_to_int :: [String] -> [Int]
-list_str_to_int [] = []
-list_str_to_int (x:xs) = str_to_int x : list_str_to_int xs
+help2 :: [Int] -> [Int]
+help2 [] = []
+help2 (x:xs) | x < 0 = x : (help2 xs)
+            | otherwise = help2 xs
+
+exercise1 :: [Int] -> ([Int],[Int])
+exercise1 xs = ((help1 xs), (help2 xs))
+
 main :: IO()
 main = do
- raw_input_str <- readFile("in.txt")
- let str_array = words raw_input_str
- 
- let str = show str_array
- writeFile "out.txt" str
-str_to_int :: String -> Int
-str_to_int str = read str
-list_str_to_int :: [String] -> [Int]
-list_str_to_int [] = []
-list_str_to_int (x:xs) = str_to_int x : list_str_to_int xs
-main :: IO()
-main = do
- raw_input_str <- readFile("in.txt")
- let str_array = words raw_input_str
- 
- let str = show str_array
- writeFile "out.txt" str
-str_to_int :: String -> Int
-str_to_int str = read str
-list_str_to_int :: [String] -> [Int]
-list_str_to_int [] = []
-list_str_to_int (x:xs) = str_to_int x : list_str_to_int xs
-main :: IO()
-main = do
- raw_input_str <- readFile("in.txt")
- let str_array = words raw_input_str
- 
- let str = show str_array
- writeFile "out.txt" str
+ print (exercise1 [2,3,5,-6,-7])
