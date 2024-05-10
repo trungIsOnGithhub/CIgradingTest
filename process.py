@@ -2,18 +2,24 @@ import os
 import base64
 import json
 
-# status = os.system("./ex1/ex1")
-
-# if status == 0:
-#     print("OK")
-# else:
-#     throw Exception("Failed To Execute")
+driver_code = {
+    'ex1': {
+        'input': '\nmain :: IO()\nmain = do\n raw_input_str <- readFile("in.txt")\n let str_list = words raw_input_str',
+        'solution': '\n let input_list = list_str_to_int str_list\n let str_result = (show (separateSigns input_list))',
+        'output': '\n writeFile "out.txt" str_result'
+    },
+    'ex2': {
+        'input': '\nmain :: IO()\nmain = do\n raw_input_str <- readFile("in.txt")\n let str_list = words raw_input_str',
+        'solution': '\n let input_list = list_str_to_int str_list\n let str_result = (show (daysInMonth (input_list !! 0) (input_list !! 1)))',
+        'output': '\n writeFile "out.txt" str_result'
+    }
+}
 
 utilities_haskell_code = '\nstr_to_int :: String -> Int\nstr_to_int str = read str\nlist_str_to_int :: [String] -> [Int]\nlist_str_to_int [] = []\nlist_str_to_int (x:xs) = str_to_int x : list_str_to_int xs'
 
-exercise_1_driver_read_input_code = '\nmain :: IO()\nmain = do\n raw_input_str <- readFile("in.txt")\n let str_list = words raw_input_str'
-exercise_1_solution_code = '\n let input_list = list_str_to_int str_list\n let str_result = (show (exercise1 input_list))'
-exercise_1_driver_write_output_code = '\n let str = show str_array\n writeFile "out.txt" str'
+# exercise_1_driver_read_input_code = 
+# exercise_1_solution_code = 
+# exercise_1_driver_write_output_code = 
 
 def exercise_1_input_prepare(input_string, file_path):
     number_str_list = input_string[1:][:-1].split(',')
@@ -21,27 +27,16 @@ def exercise_1_input_prepare(input_string, file_path):
     file = open(file_path, 'w')
 
     for number_str in number_str_list:
-        file.write(number_str + '\n')
-def exercise_1_output_prepare(file_path):
+        file.write(number_str + ' ')
+def output_prepare(file_path):
     file = open(file_path, 'r')
 
-    # loop through file line by line
-    line_encoded_bytes = line.encode('ascii')
-    line_string_bytes = base64.b64encode(line_encoded_bytes)
+    for line in file:# only 1 line
+        line_encoded_bytes = line.encode('ascii')
+        line_string_bytes = base64.b64encode(line_encoded_bytes)
 
     return line_string_bytes
 
-
-def exercise_1_input_prepare(input_string, file_path):
-    number_str_list = input_string.split(',')
-
-    file = open(file_path, 'w')
-
-    for number_str in number_str_list:
-        file.write(number_str + '\n')
-
-# def get_json_input_string():
-#     return 
 
 
 if __name__ == '__main__':
@@ -78,6 +73,18 @@ if __name__ == '__main__':
         if not os.path.isdir(attr):
             raise Exception('Test Directory Not Existed!! Invalid Format!!')
 
+        source_file_path = f'./{attr}/{attr}.hs'
+        file = open(source_file_path, 'a')
+
+        # print(source_file_path)
+        print(attr, type(attr))
+        print(driver_code[attr])
+
+        file.write(utilities_haskell_code)
+        file.write(driver_code[attr]['input'])
+        file.write(driver_code[attr]['solution'])
+        file.write(driver_code[attr]['output'])
+
         output_list = []
 
         for test in test_info:
@@ -90,26 +97,16 @@ if __name__ == '__main__':
 
             exercise_1_input_prepare(input_string, "./in.txt")
 
-            source_file_path = f'./{attr}/{attr}.hs'
-            file = open(source_file_path, 'a')
-
-            print(source_file_path)
-
-            file.write(utilities_haskell_code)
-            file.write(exercise_1_driver_read_input_code)
-            file.write(exercise_1_solution_code)
-            file.write(exercise_1_driver_write_output_code)
-
-            status = os.system('ghc ' + source_file_path)
-            if status != 0:
-                raise Exception('Cannot Compile Haskell Source')
-            status = os.system(f'./{attr}/{attr}')
-            if status != 0:
-                raise Exception('Cannot Execute Haskell Binaries')
+            # status = os.system('ghc ' + source_file_path)
+            # if status != 0:
+            #     raise Exception('Cannot Compile Haskell Source')
+            # status = os.system(f'./{attr}/{attr}')
+            # if status != 0:
+            #     raise Exception('Cannot Execute Haskell Binaries')
 
             this_test_result = {}
-            this_test_result.id = test['id']
-            this_test_result.output = exercise_1_output_prepare('out.txt')
+            this_test_result['id'] = test['id']
+            this_test_result['output'] = output_prepare('out.txt')
 
             output_list.append(this_test_result)
 
