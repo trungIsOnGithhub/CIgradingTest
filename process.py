@@ -2,21 +2,6 @@ import os
 import base64
 import json
 
-driver_code = {
-    'ex1': {
-        'input': '\nmain :: IO()\nmain = do\n raw_input_str <- readFile("in.txt")\n let str_list = words raw_input_str',
-        'solution': '\n let input_list = list_str_to_int str_list\n let str_result = (show (separateSigns input_list))',
-        'output': '\n writeFile "out.txt" str_result'
-        'input_prepare': exercise_1_input_prepare
-    },
-    'ex2': {
-        'input': '\nmain :: IO()\nmain = do\n raw_input_str <- readFile("in.txt")\n let str_list = words raw_input_str',
-        'solution': '\n let input_list = list_str_to_int str_list\n let str_result = (show (daysInMonth (input_list !! 0) (input_list !! 1)))',
-        'output': '\n writeFile "out.txt" str_result',
-        'input_prepare': exercise_2_input_prepare
-    }
-}
-
 utilities_haskell_code = '\nstr_to_int :: String -> Int\nstr_to_int str = read str\nlist_str_to_int :: [String] -> [Int]\nlist_str_to_int [] = []\nlist_str_to_int (x:xs) = str_to_int x : list_str_to_int xs'
 
 # exercise_1_driver_read_input_code = 
@@ -62,9 +47,22 @@ def get_json_input_encoded():
         }
     '''
 
+driver_code = {
+    'ex1': {
+        'input': '\nmain :: IO()\nmain = do\n raw_input_str <- readFile("in.txt")\n let str_list = words raw_input_str',
+        'solution': '\n let input_list = list_str_to_int str_list\n let str_result = (show (separateSigns input_list))',
+        'output': '\n writeFile "out.txt" str_result',
+    },
+    'ex2': {
+        'input': '\nmain :: IO()\nmain = do\n raw_input_str <- readFile("in.txt")\n let str_list = words raw_input_str',
+        'solution': '\n let input_list = list_str_to_int str_list\n let str_result = (show (daysInMonth (input_list !! 0) (input_list !! 1)))',
+        'output': '\n writeFile "out.txt" str_result',
+    }
+}
 
 if __name__ == '__main__':
-    exercise_ids = ['ex1', 'ex2']
+    temp_input_file_path = './in.txt'
+    exercise_ids = ['ex2']
     output = {}
 
     sample_json_input_string = get_json_input_encoded()
@@ -73,6 +71,7 @@ if __name__ == '__main__':
     print(sample_json_input_parsed)
 
     for attr in exercise_ids:
+        print(attr)
         test_info = sample_json_input_parsed[attr]
 
         print(test_info)
@@ -82,8 +81,8 @@ if __name__ == '__main__':
 
         # print(exercise_tests)
         # print(type(exercise_tests))
-        source_file_path = '.' + attr + '/' + attr + '.hs'
-        if not os.path.isdir(attr)i or not os.path.isfile(source_file_path2):
+        source_file_path = './' + attr + '/' + attr + '.hs'
+        if not os.path.isdir(attr) or not os.path.isfile(source_file_path):
             raise Exception('Test Directory or File Not Existed!! Invalid Format!!')
 
         file = open(source_file_path, 'a')
@@ -106,8 +105,11 @@ if __name__ == '__main__':
             print('hijilj  '+input_string)
             # print(type(input_string))
 
-            # exercise_1_input_prepare()
-            driver_code[attr]['input_prepare'](input_string, "./in.txt")
+            if attr == 'ex1':
+                exercise_1_input_prepare(input_string, temp_input_file_path)
+            elif attr == 'ex2':
+                exercise_2_input_prepare(input_string, temp_input_file_path)
+            # driver_code[attr]['input_prepare'](input_string, "./in.txt")
 
             # status = os.system('ghc ' + source_file_path)
             # if status != 0:
