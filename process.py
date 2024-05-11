@@ -7,11 +7,13 @@ driver_code = {
         'input': '\nmain :: IO()\nmain = do\n raw_input_str <- readFile("in.txt")\n let str_list = words raw_input_str',
         'solution': '\n let input_list = list_str_to_int str_list\n let str_result = (show (separateSigns input_list))',
         'output': '\n writeFile "out.txt" str_result'
+        'input_prepare': exercise_1_input_prepare
     },
     'ex2': {
         'input': '\nmain :: IO()\nmain = do\n raw_input_str <- readFile("in.txt")\n let str_list = words raw_input_str',
         'solution': '\n let input_list = list_str_to_int str_list\n let str_result = (show (daysInMonth (input_list !! 0) (input_list !! 1)))',
-        'output': '\n writeFile "out.txt" str_result'
+        'output': '\n writeFile "out.txt" str_result',
+        'input_prepare': exercise_2_input_prepare
     }
 }
 
@@ -37,25 +39,35 @@ def output_prepare(file_path):
 
     return line_string_bytes
 
-
-
-if __name__ == '__main__':
-    exercise_ids = ['ex1', 'ex2']
-    output = {}
-
-    sample_json_input_string = '''
-        {
-            "ex1": [
+def exercise_2_input_prepare(input_string, file_path):
+    vui = '''            "ex1": [
                 {"id": "ex1.1", "input":"WzgsOCw4LDgsOCw4XQ=="},
                 {"id": "ex1.2", "input":"Wy05LC05LC05LC05XQ=="},
                 {"id": "ex1.3", "input":"WzYsLTgsOSwtNl0="}
-            ],
+            ],'''
+    number_str_list = input_string.split(',')
+
+    file = open(file_path, 'w')
+
+    for number_str in number_str_list:
+        file.write(number_str + ' ')
+
+def get_json_input_encoded():
+	return '''
+        {
             "ex2": [
                 {"id": "ex2.1", "input":"MiwyMDIw"},
                 {"id": "ex2.2", "input":"NSwyMDE3"}        
             ]
         }
     '''
+
+
+if __name__ == '__main__':
+    exercise_ids = ['ex1', 'ex2']
+    output = {}
+
+    sample_json_input_string = get_json_input_encoded()
     sample_json_input_parsed = json.loads(sample_json_input_string)
 
     print(sample_json_input_parsed)
@@ -66,19 +78,19 @@ if __name__ == '__main__':
         print(test_info)
 
         if test_info is None:
-            raise Exception('Test Not Existed!! Invalid Data!!')
+            raise Exception('Test Not Existed!!')
 
         # print(exercise_tests)
         # print(type(exercise_tests))
-        if not os.path.isdir(attr):
-            raise Exception('Test Directory Not Existed!! Invalid Format!!')
+        source_file_path = '.' + attr + '/' + attr + '.hs'
+        if not os.path.isdir(attr)i or not os.path.isfile(source_file_path2):
+            raise Exception('Test Directory or File Not Existed!! Invalid Format!!')
 
-        source_file_path = f'./{attr}/{attr}.hs'
         file = open(source_file_path, 'a')
 
         # print(source_file_path)
         print(attr, type(attr))
-        print(driver_code[attr])
+        # print(driver_code[attr])
 
         file.write(utilities_haskell_code)
         file.write(driver_code[attr]['input'])
@@ -86,16 +98,16 @@ if __name__ == '__main__':
         file.write(driver_code[attr]['output'])
 
         output_list = []
-
         for test in test_info:
             input_encoded_bytes = test['input'].encode('ascii')
             input_string_bytes = base64.b64decode(input_encoded_bytes)
             input_string = input_string_bytes.decode('ascii')
 
-            print(input_string)
+            print('hijilj  '+input_string)
             # print(type(input_string))
 
-            exercise_1_input_prepare(input_string, "./in.txt")
+            # exercise_1_input_prepare()
+            driver_code[attr]['input_prepare'](input_string, "./in.txt")
 
             # status = os.system('ghc ' + source_file_path)
             # if status != 0:
