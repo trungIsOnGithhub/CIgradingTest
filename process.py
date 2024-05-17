@@ -25,11 +25,7 @@ def output_prepare(file_path):
     return line_string_bytes
 
 def exercise_2_input_prepare(input_string, file_path):
-    vui = '''            "ex1": [
-                {"id": "ex1.1", "input":"WzgsOCw4LDgsOCw4XQ=="},
-                {"id": "ex1.2", "input":"Wy05LC05LC05LC05XQ=="},
-                {"id": "ex1.3", "input":"WzYsLTgsOSwtNl0="}
-            ],'''
+# vui = ''''''
     number_str_list = input_string.split(',')
 
     file = open(file_path, 'w')
@@ -40,6 +36,11 @@ def exercise_2_input_prepare(input_string, file_path):
 def get_json_input_encoded():
 	return '''
         {
+            "ex1": [
+                {"id": "ex1.1", "input":"WzgsOCw4LDgsOCw4XQ=="},
+                {"id": "ex1.2", "input":"Wy05LC05LC05LC05XQ=="},
+                {"id": "ex1.3", "input":"WzYsLTgsOSwtNl0="}
+            ],
             "ex2": [
                 {"id": "ex2.1", "input":"MiwyMDIw"},
                 {"id": "ex2.2", "input":"NSwyMDE3"}        
@@ -62,7 +63,7 @@ driver_code = {
 
 if __name__ == '__main__':
     temp_input_file_path = './in.txt'
-    exercise_ids = ['ex2']
+    exercise_ids = ['ex1', 'ex2']
     output = {}
 
     sample_json_input_string = get_json_input_encoded()
@@ -71,10 +72,10 @@ if __name__ == '__main__':
     print(sample_json_input_parsed)
 
     for attr in exercise_ids:
-        print(attr)
+        # print(attr)
         test_info = sample_json_input_parsed[attr]
 
-        print(test_info)
+        # print(test_info)
 
         if test_info is None:
             raise Exception('Test Not Existed!!')
@@ -88,7 +89,7 @@ if __name__ == '__main__':
         file = open(source_file_path, 'a')
 
         # print(source_file_path)
-        print(attr, type(attr))
+        # print(attr, type(attr))
         # print(driver_code[attr])
 
         file.write(utilities_haskell_code)
@@ -102,7 +103,7 @@ if __name__ == '__main__':
             input_string_bytes = base64.b64decode(input_encoded_bytes)
             input_string = input_string_bytes.decode('ascii')
 
-            print('hijilj  '+input_string)
+            # print('hijilj  '+input_string)
             # print(type(input_string))
 
             if attr == 'ex1':
@@ -126,4 +127,4 @@ if __name__ == '__main__':
 
         output[attr] = output_list
 
-    print(output)
+    # print(output)
