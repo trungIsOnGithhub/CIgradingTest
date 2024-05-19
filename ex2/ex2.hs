@@ -20,15 +20,3 @@ main = do
  let input_list = list_str_to_int str_list
  let str_result = (show (daysInMonth (input_list !! 0) (input_list !! 1)))
  writeFile "out.txt" str_result
-str_to_int :: String -> Int
-str_to_int str = read str
-list_str_to_int :: [String] -> [Int]
-list_str_to_int [] = []
-list_str_to_int (x:xs) = str_to_int x : list_str_to_int xs
-main :: IO()
-main = do
- raw_input_str <- readFile("in.txt")
- let str_list = words raw_input_str
- let input_list = list_str_to_int str_list
- let str_result = (show (daysInMonth (input_list !! 0) (input_list !! 1)))
- writeFile "out.txt" str_result
